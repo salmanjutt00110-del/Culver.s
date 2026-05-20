@@ -6,12 +6,13 @@ import ReviewSlider from "./ReviewSlider";
 
 export default function Reviews() {
   const { scrollY } = useScroll();
-  const parallax = useTransform(scrollY, [0, 500], [0, 120]);
+  const cloudY = useTransform(scrollY, [0, 500], [0, 120]);
   return (
     <section id="reviews" className="relative py-0 overflow-hidden bg-background">
 
       {/* Blue header stripe */}
-      <motion.div className="menu-stripe py-8 px-4" style={{ y: parallax }}>
+      <motion.div className="menu-stripe py-8 px-4 overflow-hidden" style={{ y: cloudY }}>
+        <motion.div className="pointer-events-none absolute left-1/2 top-6 -translate-x-1/2 h-64 w-64 rounded-full bg-culvblue/10 blur-3xl" />
         <motion.div
           initial="hidden"
           whileInView="visible"
