@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Tilt from "react-parallax-tilt";
 import { RESTAURANT } from "../data/constants";
 
 export default function MenuCard({ item }) {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <motion.div
+    <Tilt tiltMaxAngleX={12} tiltMaxAngleY={12} scale={1.02} transitionSpeed={400}>
+      <motion.div
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
       initial={{ opacity: 0, y: 30 }}
@@ -86,6 +88,7 @@ export default function MenuCard({ item }) {
           Order This Item →
         </motion.a>
       </div>
-    </motion.div>
+      </motion.div>
+    </Tilt>
   );
 }

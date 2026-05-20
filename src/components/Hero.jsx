@@ -1,11 +1,11 @@
-const db = globalThis.__B44_DB__ || { auth:{ isAuthenticated: async()=>false, me: async()=>null }, entities:new Proxy({}, { get:()=>({ filter:async()=>[], get:async()=>null, create:async()=>({}), update:async()=>({}), delete:async()=>({}) }) }), integrations:{ Core:{ UploadFile:async()=>({ file_url:'' }) } } };
-
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown, Star, MapPin } from "lucide-react";
+import Tilt from "react-parallax-tilt";
 import { RESTAURANT } from "../data/constants";
 import { staggerContainer, fadeUp, buttonTap } from "../animations/variants";
 
 const HERO_IMAGE = "https://media.db.com/images/public/6a0d074461a7dedb149e2265/57ade102c_generated_62bf8bdb.png";
+const BURGER_IMAGE = "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=400&fit=crop";
 
 export default function Hero() {
   const { scrollY } = useScroll();
@@ -34,7 +34,7 @@ export default function Hero() {
         variants={staggerContainer}
         initial="hidden"
         animate="visible"
-        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-0"
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-0 grid md:grid-cols-2 items-center gap-8"
       >
         <div className="max-w-2xl">
           {/* Rating badge */}
@@ -95,6 +95,24 @@ export default function Hero() {
             </motion.a>
           </motion.div>
         </div>
+
+        {/* 3D Rotating Burger */}
+        <motion.div variants={fadeUp} className="hidden md:flex justify-center items-center h-full">
+          <Tilt tiltMaxAngleX={25} tiltMaxAngleY={25} scale={1.05} transitionSpeed={400}>
+            <motion.div
+              animate={{ rotateY: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              className="relative w-64 h-64 flex items-center justify-center"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-gold/30 via-transparent to-gold/20 rounded-full blur-3xl" />
+              <img
+                src={BURGER_IMAGE}
+                alt="3D Rotating ButterBurger"
+                className="w-full h-full object-cover rounded-full shadow-2xl border-4 border-gold"
+              />
+            </motion.div>
+          </Tilt>
+        </motion.div>
       </motion.div>
 
       {/* Scroll indicator */}

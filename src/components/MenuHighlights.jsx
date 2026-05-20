@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { staggerContainer, fadeUp } from "../animations/variants";
 import { menuItems, categories } from "../data/menuItems";
 import MenuCard from "./MenuCard";
 
 export default function MenuHighlights() {
   const [activeCategory, setActiveCategory] = useState("all");
+  const { scrollY } = useScroll();
+  const parallax = useTransform(scrollY, [0, 500], [0, -80]);
 
   const filtered = activeCategory === "all"
     ? menuItems
@@ -15,7 +17,7 @@ export default function MenuHighlights() {
     <section id="menu" className="relative py-0 bg-background overflow-hidden">
 
       {/* ── Blue menu-board header stripe ── */}
-      <div className="menu-stripe py-8 px-4 relative overflow-hidden">
+      <motion.div className="menu-stripe py-8 px-4 relative overflow-hidden" style={{ y: parallax }}>
         <div className="absolute inset-0 grain-overlay" />
         <motion.div
           initial="hidden"
@@ -34,7 +36,7 @@ export default function MenuHighlights() {
             Hover any item to see ingredients — tap to order online
           </motion.p>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Gold divider stripe */}
       <div className="h-[5px] bg-gold w-full" />

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { Users, Leaf, CalendarDays } from "lucide-react";
 import { staggerContainer, fadeUp } from "../animations/variants";
 
@@ -34,10 +34,13 @@ const stats = [
 ];
 
 export default function About() {
+  const { scrollY } = useScroll();
+  const parallax1 = useTransform(scrollY, [0, 500], [0, 100]);
+
   return (
     <section id="about" className="relative py-0 bg-background overflow-hidden">
       {/* Blue header stripe */}
-      <div className="menu-stripe py-8 px-4">
+      <motion.div className="menu-stripe py-8 px-4" style={{ y: parallax1 }}>
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -52,7 +55,7 @@ export default function About() {
             Built on Quality
           </motion.h2>
         </motion.div>
-      </div>
+      </motion.div>
       <div className="h-[5px] bg-gold w-full" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

@@ -1,15 +1,17 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Star, ExternalLink } from "lucide-react";
 import { staggerContainer, fadeUp, fadeRight } from "../animations/variants";
 import { RESTAURANT } from "../data/constants";
 import ReviewSlider from "./ReviewSlider";
 
 export default function Reviews() {
+  const { scrollY } = useScroll();
+  const parallax = useTransform(scrollY, [0, 500], [0, 120]);
   return (
     <section id="reviews" className="relative py-0 overflow-hidden bg-background">
 
       {/* Blue header stripe */}
-      <div className="menu-stripe py-8 px-4">
+      <motion.div className="menu-stripe py-8 px-4" style={{ y: parallax }}>
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -24,7 +26,7 @@ export default function Reviews() {
             Loved by Lakewood
           </motion.h2>
         </motion.div>
-      </div>
+      </motion.div>
       <div className="h-[5px] bg-gold w-full" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
