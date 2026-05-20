@@ -9,6 +9,7 @@ export const menuItems = [
     emoji: "🍔",
     price: "$5.49",
     category: "burgers",
+    image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop",
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ export const menuItems = [
     emoji: "🥓",
     price: "$8.99",
     category: "burgers",
+    image: "https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&h=300&fit=crop",
   },
   {
     id: 3,
@@ -31,6 +33,7 @@ export const menuItems = [
     emoji: "🧀",
     price: "$4.99",
     category: "sides",
+    image: "https://images.unsplash.com/photo-1599599810694-b5ac4dd96372?w=400&h=300&fit=crop",
   },
   {
     id: 4,
@@ -42,6 +45,7 @@ export const menuItems = [
     emoji: "🍦",
     price: "$3.99",
     category: "desserts",
+    image: "https://images.unsplash.com/photo-1563805042-7684c019e157?w=400&h=300&fit=crop",
   },
   {
     id: 5,
@@ -53,6 +57,7 @@ export const menuItems = [
     emoji: "🐟",
     price: "$6.99",
     category: "fish",
+    image: "https://images.unsplash.com/photo-1580959375944-abd7e991f971?w=400&h=300&fit=crop",
   },
   {
     id: 6,
@@ -64,6 +69,7 @@ export const menuItems = [
     emoji: "🥪",
     price: "$7.49",
     category: "burgers",
+    image: "https://images.unsplash.com/photo-1585238341710-4dd83f468b0d?w=400&h=300&fit=crop",
   },
 ];
 

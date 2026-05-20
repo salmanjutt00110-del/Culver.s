@@ -1,17 +1,6 @@
-const db = globalThis.__B44_DB__ || { auth:{ isAuthenticated: async()=>false, me: async()=>null }, entities:new Proxy({}, { get:()=>({ filter:async()=>[], get:async()=>null, create:async()=>({}), update:async()=>({}), delete:async()=>({}) }) }), integrations:{ Core:{ UploadFile:async()=>({ file_url:'' }) } } };
-
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { RESTAURANT } from "../data/constants";
-
-const MENU_IMAGES = {
-  1: "https://media.db.com/images/public/6a0d074461a7dedb149e2265/57ade102c_generated_62bf8bdb.png",
-  2: "https://media.db.com/images/public/6a0d074461a7dedb149e2265/fd5948237_generated_53870589.png",
-  3: "https://media.db.com/images/public/6a0d074461a7dedb149e2265/c9ede62cb_generated_1674ebe3.png",
-  4: "https://media.db.com/images/public/6a0d074461a7dedb149e2265/ac40f2719_generated_72785339.png",
-  5: "https://media.db.com/images/public/6a0d074461a7dedb149e2265/e34fa1523_generated_b4db62fd.png",
-  6: "https://media.db.com/images/public/6a0d074461a7dedb149e2265/2c8da5ab9_generated_454387af.png",
-};
 
 export default function MenuCard({ item }) {
   const [hovered, setHovered] = useState(false);
@@ -30,7 +19,7 @@ export default function MenuCard({ item }) {
       {/* ── Image ── */}
       <div className="relative h-48 overflow-hidden">
         <motion.img
-          src={MENU_IMAGES[item.id]}
+          src={item.image}
           alt={item.name}
           className="w-full h-full object-cover"
           animate={{ scale: hovered ? 1.08 : 1 }}
