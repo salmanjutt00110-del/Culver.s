@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:wght@400;500;600;700&family=Permanent+Marker&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Culver's official menu-board blue theme */
+    --background: 210 20% 98%;
+    --foreground: 220 40% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 40% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 40% 10%;
+    --primary: 218 85% 38%;       /* Culver's blue #1A5CB8 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 218 70% 22%;     /* Deep navy #0D2F6B */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 210 20% 93%;
+    --muted-foreground: 220 15% 45%;
+    --accent: 43 95% 50%;         /* Golden yellow #F5B800 */
+    --accent-foreground: 220 40% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 20% 86%;
+    --input: 210 20% 86%;
+    --ring: 218 85% 38%;
+    --radius: 0.6rem;
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-accent: 'Permanent Marker', cursive;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+}
+
+/* Animated gradient for CTA banner */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+/* Smooth scrolling */
+html { scroll-behavior: smooth; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar        { width: 8px; }
+::-webkit-scrollbar-track  { background: #f0f4fa; }
+::-webkit-scrollbar-thumb  { background: #1A5CB8; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #0D2F6B; }
+
+/* Grain texture */
+.grain-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Blue menu-board section header stripe */
+.menu-stripe {
+  background: linear-gradient(135deg, #1A5CB8 0%, #0D2F6B 100%);
+}
+
+/* Checkerboard divider pattern (diner vibe) */
+.diner-divider {
+  background-image: repeating-linear-gradient(
+    90deg,
+    #1A5CB8 0px,
+    #1A5CB8 12px,
+    #0D2F6B 12px,
+    #0D2F6B 24px
+  );
+  height: 6px;
+}
